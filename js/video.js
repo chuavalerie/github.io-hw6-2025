@@ -7,15 +7,15 @@ window.addEventListener("load", function () {
 	// Force disable autoplay
 	video.autoplay = false;
 	video.pause();
-
-	// Load volume
-	document.querySelector("#volume").innerHTML = `${slider.value}%`
 });
 
 // Play video button
 document.querySelector("#play").addEventListener("click", function () {
 	console.log("Play Video");
 	video.play();
+
+	// Load volume
+	document.querySelector("#volume").innerHTML = `${slider.value}%`;
 })
 
 // Pause video button
