@@ -76,5 +76,5 @@ document.querySelector("#vintage").addEventListener("click", function () {
 // Original button
 document.querySelector("#orig").addEventListener("click", function () {
 	console.log("Revert original");
-	video.classList.add("oldSchool");
+	video.classList.remove("oldSchool");
 })
