@@ -7,6 +7,9 @@ window.addEventListener("load", function () {
 	// Force disable autoplay
 	video.autoplay = false;
 	video.pause();
+
+	// Load volume
+	document.querySelector("#volume").innerHTML = `${slider.value}%`
 });
 
 // Play video button
@@ -38,13 +41,14 @@ document.querySelector("#faster").addEventListener("click", function () {
 // Skip button
 document.querySelector("#skip").addEventListener("click", function () {
 	console.log("Skip Video");
-	if ((video.currentTime += 10) >= video.duration) {
+	let newTime = video.currentTime + 10;
+	if (newTime >= video.duration) {
 		video.currentTime = 0;
 	}
 	else {
-		video.currentTime += 10
+		video.currentTime = newTime;
 	}
-	console.log("Current Video Time:", video.currentTime);
+	console.log("Video current time is", video.currentTime);
 })
 
 // Mute/Unmute button
@@ -57,9 +61,10 @@ document.querySelector("#mute").addEventListener("click", function () {
 // Volume Slider
 const slider = document.querySelector("#slider");
 slider.addEventListener("input", function (event) {
+	document.querySelector("#volume").innerHTML = `${event.target.value}%`;
 	const newValue = event.target.value / 100;
 	video.volume = newValue;
-	console.log("Volume:", (newValue * 100), "%");
+	console.log("The current value is", newValue);
 })
 
 // Old school button
@@ -71,5 +76,5 @@ document.querySelector("#vintage").addEventListener("click", function () {
 // Original button
 document.querySelector("#orig").addEventListener("click", function () {
 	console.log("Revert original");
-	video.classList.remove("oldSchool");
+	video.classList.add("oldSchool");
 })
